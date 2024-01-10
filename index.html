@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>은퇴 계산기</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f0f4f7;
+        }
+
+        h1 {
+            color: #2a9d8f;
+        }
+
+        input, button {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        input:focus, button:focus {
+            outline: none;
+            box-shadow: 0 0 10px #2a9d8f;
+        }
+
+        button {
+            color: white;
+            background-color: #2a9d8f;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #238b68;
+        }
+
+        label {
+            color: #333;
+            font-size: 16px;
+        }
+
+        #result {
+            color: #2a9d8f;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function calculateRetirement() {
+            var initialInvestment = document.getElementById('initialInvestment').value;
+            var interestRate = document.getElementById('interestRate').value;
+            var years = document.getElementById('years').value;
+
+            var finalAmount = initialInvestment * Math.pow(1 + interestRate / 100, years);
+        
+            document.getElementById('result').innerText = finalAmount.toFixed(2);
+            alert(finalAmount.toFixed(2))
+        }
+    </script>
+
+</head>
+<body>
+    
+    <h1>은퇴 계산기</h1>
+    <div>
+        <label for="initialInvestment">초기 투자금: </label>
+        <input type="number" id="initialInvestment" required>
+    </div>
+    <div>
+        <label for="interestRate">이자율 (%): </label>
+        <input type="number" id="interestRate" step="0.01" required>
+    </div>
+    <div>
+        <label for="years">기간 (년): </label>
+        <input type="number" id="years" required>
+    </div>
+    <button onclick="calculateRetirement()">계산하기</button>
+    <h2>예상 수익: <span id="result">0</span> 원</h2>
+    
+    
+
+</body>
+</html>
